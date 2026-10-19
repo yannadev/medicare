@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light">
+  <link rel="icon" href="../assets/logo.png" type="image/png"><link rel="stylesheet" href="../styles/theme.css"><link rel="stylesheet" href="../styles/checkout.css">
+  <title>Checkout — Medicare.</title>
+</head>
+<body>
+  <header class="checkout-header"><div class="container checkout-header-inner"><a class="brand" href="home.html"><img class="brand-logo" src="../assets/logo.png" alt="">Medicare.</a><a class="header-back" href="home.html#products"><i data-lucide="arrow-left"></i> Continue shopping</a></div></header>
+  <main class="container checkout-main">
+    <div class="checkout-intro"><div><h1>Your cart</h1><p>Review your picks and see everything together before continuing.</p></div><a class="button button-outline" href="home.html#products"><i data-lucide="plus"></i> Add more products</a></div>
+    <div id="load-error" class="notice notice-error" hidden>We could not load the product catalog. Reload the page to try again.</div>
+    <div id="empty-cart" class="empty-cart" hidden><div class="empty-icon"><i data-lucide="shopping-bag"></i></div><h2>Your cart is empty</h2><p>Browse the collection and add a few essentials to get started.</p><a class="button button-primary" href="home.html#products">Explore products <i data-lucide="arrow-right"></i></a></div>
+    <div id="checkout-content" class="checkout-grid" hidden>
+      <div class="checkout-details">
+        <section class="checkout-section cart-section" aria-labelledby="items-heading"><div class="section-row"><h2 id="items-heading">Items in your cart</h2><span id="item-count"></span></div><div id="cart-items" class="cart-items"></div></section>
+        <section class="checkout-section" aria-labelledby="delivery-heading"><h2 id="delivery-heading">Delivery details</h2><p class="section-subtext">Use fictional details here. Nothing entered is stored or sent.</p><form id="checkout-form" novalidate><div class="field"><label for="full-name">Full name</label><input id="full-name" autocomplete="off" required placeholder="Your name"></div><div class="field"><label for="contact-number">Contact number</label><input id="contact-number" inputmode="tel" autocomplete="off" required placeholder="0912 345 6789"></div><div class="field"><label for="address">Delivery address</label><textarea id="address" autocomplete="off" required placeholder="Enter an address"></textarea></div><div class="field"><label for="notes">Order notes <span class="optional">(optional)</span></label><textarea id="notes" autocomplete="off" placeholder="Anything else to add?"></textarea></div><p id="checkout-error" class="notice notice-error" role="alert" hidden></p></form></section>
+        <section class="checkout-section" aria-labelledby="payment-heading"><h2 id="payment-heading">Payment method</h2><p class="section-subtext">Choose a method to review the flow. No payment will be collected.</p><div class="payment-options"><label class="payment-option"><input type="radio" name="payment" value="cod" checked><span class="payment-option-icon"><i data-lucide="banknote"></i></span><span><strong>Cash on Delivery</strong><small>Review order flow</small></span></label><label class="payment-option"><input type="radio" name="payment" value="gcash"><span class="payment-option-icon"><i data-lucide="wallet"></i></span><span><strong>GCash</strong><small>Review QR flow</small></span></label></div><div id="gcash-panel" class="gcash-panel" hidden><img src="../assets/payment-preview.svg" alt="Nonfunctional QR artwork; do not scan to pay"><div><strong>QR preview only</strong><p>This artwork cannot accept payments. Do not scan or send money.</p><span id="gcash-amount"></span></div></div></section>
+      </div>
+      <aside class="order-summary" aria-labelledby="summary-heading"><h2 id="summary-heading">Order summary</h2><div id="summary-lines" class="summary-lines"></div><div class="summary-total"><span>Total</span><strong id="order-total">₱0</strong></div><p class="summary-note"><i data-lucide="info"></i> No real purchase or payment will be made.</p><button id="complete-button" class="button button-primary complete-button" type="submit" form="checkout-form">Finish order preview <i data-lucide="arrow-right"></i></button></aside>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container footer-bottom"><span>© 2026 Medicare.</span><span>Your health, our priority.</span></div></footer>
+  <dialog id="remove-dialog" class="dialog-danger" aria-labelledby="remove-title"><button id="remove-close" class="icon-button dialog-close" type="button" aria-label="Close"><i data-lucide="x"></i></button><div class="dialog-icon"><i data-lucide="trash-2"></i></div><h2 id="remove-title">Remove this item?</h2><p>The item will be removed from your cart.</p><div class="dialog-actions"><button id="remove-cancel" class="button button-outline" type="button">Keep item</button><button id="remove-confirm" class="button button-primary" type="button">Remove item</button></div></dialog>
+  <dialog id="success-dialog" class="dialog-success" aria-labelledby="success-title"><button id="success-close" class="icon-button dialog-close" type="button" aria-label="Close"><i data-lucide="x"></i></button><div class="dialog-icon"><i data-lucide="check"></i></div><h2 id="success-title">Order flow complete</h2><p id="success-message">No real order was placed or payment collected.</p><div class="dialog-actions"><a class="button button-primary" href="home.html">Return to home</a></div></dialog>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="../scripts/dialog.js"></script>
+  <script>
+    const CART_STORAGE_KEY = 'medicare_cart'; const peso = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP', maximumFractionDigits: 0 }); const byId = id => document.getElementById(id);
+    let products = []; let cart = []; let pendingRemoval = null;
+    const removeDialog = createFluidDialog(byId('remove-dialog'), { fallbackFocus: () => document.querySelector('#cart-items .remove-button') || document.querySelector('#empty-cart a') });
+    const successDialog = createFluidDialog(byId('success-dialog'), { fallbackFocus: () => document.querySelector('#empty-cart a') });
+    function icons(root) { if (window.lucide) window.lucide.createIcons(root ? { root } : undefined); }
+    function readCart() { try { const data = JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || '[]'); if (!Array.isArray(data)) return []; const merged = new Map(); for (const item of data) if (item && typeof item.product_id === 'string' && Number.isInteger(item.quantity) && item.quantity > 0) merged.set(item.product_id, (merged.get(item.product_id) || 0) + item.quantity); return [...merged].map(([product_id, quantity]) => ({ product_id, quantity })); } catch { return []; } }
+    function saveCart() { try { localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart)); } catch { showError('Cart storage is unavailable in this browser.'); } }
+    function showError(message) { const error = byId('checkout-error'); error.textContent = message; error.hidden = false; error.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+    function productFor(id) { return products.find(item => item.product_id === id); }
+    function lineFor(item) { const product = productFor(item.product_id); return product ? { product, quantity: item.quantity, subtotal: product.price * item.quantity } : null; }
+    function itemRow(item) {
+      const line = lineFor(item); const row = document.createElement('article'); row.className = 'cart-item'; row.dataset.productId = item.product_id;
+      row.innerHTML = '<img class="cart-item-image" loading="lazy"><div class="cart-item-info"><span class="item-category"></span><h3></h3><span class="item-unit"></span><div class="quantity-control"><button type="button" class="decrease" aria-label="Decrease quantity"><i data-lucide="minus"></i></button><span class="item-quantity"></span><button type="button" class="increase" aria-label="Increase quantity"><i data-lucide="plus"></i></button></div></div><div class="item-end"><strong class="item-subtotal"></strong><button type="button" class="remove-button" aria-label="Remove item"><i data-lucide="trash-2"></i></button></div>';
+      const img = row.querySelector('img'); img.src = '../' + line.product.image; img.alt = line.product.product_name; row.querySelector('.item-category').textContent = line.product.category; row.querySelector('h3').textContent = line.product.product_name; row.querySelector('.item-unit').textContent = `${peso.format(line.product.price)} each`; row.querySelector('.item-quantity').textContent = line.quantity; row.querySelector('.item-subtotal').textContent = peso.format(line.subtotal); row.querySelector('.increase').disabled = line.quantity >= line.product.stock;
+      return row;
+    }
+    function render() {
+      const lines = cart.map(lineFor).filter(Boolean); const empty = lines.length === 0;
+      byId('empty-cart').hidden = !empty; byId('checkout-content').hidden = empty; byId('cart-items').replaceChildren(...cart.map(itemRow));
+      const count = lines.reduce((sum, line) => sum + line.quantity, 0); byId('item-count').textContent = `${count} item${count === 1 ? '' : 's'}`;
+      const summary = byId('summary-lines'); summary.replaceChildren();
+      lines.forEach(line => { const item = document.createElement('div'); item.className = 'summary-line'; const name = document.createElement('span'); name.textContent = `${line.product.product_name} × ${line.quantity}`; const amount = document.createElement('strong'); amount.textContent = peso.format(line.subtotal); item.append(name, amount); summary.append(item); });
+      const total = lines.reduce((sum, line) => sum + line.subtotal, 0); byId('order-total').textContent = peso.format(total); byId('gcash-amount').textContent = peso.format(total); icons(byId('cart-items'));
+    }
+    function updateQuantity(id, change) { const item = cart.find(entry => entry.product_id === id); const product = productFor(id); if (!item || !product) return; const next = item.quantity + change; if (next < 1 || next > product.stock) return; item.quantity = next; saveCart(); render(); }
+    function selectedPayment() { return document.querySelector('input[name="payment"]:checked').value; }
+    function updatePayment() { const gcash = selectedPayment() === 'gcash'; byId('gcash-panel').hidden = !gcash; byId('complete-button').innerHTML = gcash ? 'Finish GCash preview <i data-lucide="arrow-right"></i>' : 'Finish order preview <i data-lucide="arrow-right"></i>'; icons(byId('complete-button')); }
+    async function load() {
+      try { const response = await fetch('../product.json', { cache: 'no-store' }); if (!response.ok) throw new Error('Load failed'); const data = await response.json(); if (!Array.isArray(data) || !data.every(item => item && typeof item.product_id === 'string' && Number.isFinite(item.price) && Number.isInteger(item.stock) && item.stock >= 0 && /^assets\/[a-z0-9-]+\.(jpg|png)$/.test(item.image))) throw new Error('Invalid data'); products = data;
+        cart = readCart().filter(item => productFor(item.product_id)?.stock > 0).map(item => ({ product_id: item.product_id, quantity: Math.min(item.quantity, productFor(item.product_id).stock) })); saveCart(); render();
+      } catch { byId('load-error').hidden = false; byId('checkout-content').hidden = true; byId('empty-cart').hidden = true; }
+    }
+    byId('cart-items').addEventListener('click', event => { const row = event.target.closest('.cart-item'); if (!row) return; if (event.target.closest('.increase')) updateQuantity(row.dataset.productId, 1); if (event.target.closest('.decrease')) updateQuantity(row.dataset.productId, -1); const removeButton = event.target.closest('.remove-button'); if (removeButton) { pendingRemoval = row.dataset.productId; removeDialog.show(removeButton); } });
+    byId('remove-close').addEventListener('click', () => removeDialog.close()); byId('remove-cancel').addEventListener('click', () => removeDialog.close());
+    byId('remove-confirm').addEventListener('click', () => { cart = cart.filter(item => item.product_id !== pendingRemoval); pendingRemoval = null; saveCart(); render(); removeDialog.close(); });
+    document.querySelectorAll('input[name="payment"]').forEach(radio => radio.addEventListener('change', updatePayment));
+    byId('checkout-form').addEventListener('submit', event => {
+      event.preventDefault(); byId('checkout-error').hidden = true; if (!cart.length) return;
+      const name = byId('full-name').value.trim(); const contact = byId('contact-number').value.trim(); const address = byId('address').value.trim();
+      if (name.length < 2) { showError('Enter a full name.'); byId('full-name').focus(); return; }
+      if (!/^\+?[0-9\s-]{9,16}$/.test(contact)) { showError('Enter a valid contact number.'); byId('contact-number').focus(); return; }
+      if (address.length < 8) { showError('Enter a fictional delivery address with at least 8 characters.'); byId('address').focus(); return; }
+      const gcash = selectedPayment() === 'gcash'; byId('success-title').textContent = gcash ? 'Payment flow complete' : 'Order flow complete'; byId('success-message').textContent = gcash ? 'No money moved and no real order was placed.' : 'No real order or delivery request was placed.';
+      cart = []; try { localStorage.removeItem(CART_STORAGE_KEY); } catch {} byId('checkout-form').reset(); updatePayment(); render(); successDialog.show(document.activeElement);
+    });
+    byId('success-close').addEventListener('click', () => successDialog.close());
+    icons(); updatePayment(); load();
+  </script>
+</body>
+</html>

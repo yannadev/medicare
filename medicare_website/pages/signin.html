@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light">
+  <link rel="icon" href="../assets/logo.png" type="image/png"><link rel="stylesheet" href="../styles/theme.css"><link rel="stylesheet" href="../styles/signin.css">
+  <title>Sign In — Medicare.</title>
+</head>
+<body>
+  <main class="auth-shell">
+    <section class="auth-aside" aria-label="Welcome to Medicare"><a class="brand" href="home.html"><img class="brand-logo" src="../assets/logo.png" alt="">Medicare.</a><div class="aside-copy"><span class="eyebrow-light">Everyday care, made simpler</span><h1>Your health,<br>our priority.</h1><p>Browse essentials for everyday care with a shopping experience designed to feel simple.</p></div></section>
+    <section class="auth-main"><div class="auth-top"><a class="brand mobile-brand" href="home.html"><img class="brand-logo" src="../assets/logo.png" alt="">Medicare.</a><a href="home.html" class="back-link"><i data-lucide="arrow-left"></i> Back to home</a></div><div class="auth-card"><div class="auth-heading"><h2>Welcome back</h2><p>Sign in to continue your shopping journey.</p></div><form id="signin-form" novalidate><div class="field"><label for="identity">Username</label><input id="identity" name="identity" autocomplete="username" required placeholder="Enter your username"></div><div class="field"><label for="password">Password</label><div class="password-wrap"><input id="password" name="password" type="password" autocomplete="current-password" required placeholder="Enter password"><button class="password-toggle" id="show-password" type="button" aria-label="Show password"><i data-lucide="eye"></i></button></div></div><p id="form-error" class="notice notice-error" role="alert" hidden></p><button id="submit-button" class="button button-primary submit-button" type="submit">Sign In <i data-lucide="arrow-right"></i></button></form><p class="auth-switch">New here? <a href="signup.html">Sign Up</a></p></div></section>
+  </main>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>
+    const form = document.getElementById('signin-form');
+    const error = document.getElementById('form-error');
+    const password = document.getElementById('password');
+    if (window.lucide) window.lucide.createIcons();
+    document.getElementById('show-password').addEventListener('click', () => { const visible = password.type === 'password'; password.type = visible ? 'text' : 'password'; document.getElementById('show-password').setAttribute('aria-label', visible ? 'Hide password' : 'Show password'); });
+    function showError(message) { error.textContent = message; error.hidden = false; }
+    form.addEventListener('submit', async event => {
+      event.preventDefault(); error.hidden = true;
+      const identity = document.getElementById('identity').value.trim().toLowerCase(); const enteredPassword = password.value;
+      if (!identity || !enteredPassword) { showError('Enter your username and password.'); return; }
+      const button = document.getElementById('submit-button'); button.disabled = true; button.textContent = 'Checking account…';
+      try {
+        const response = await fetch('../account.json', { cache: 'no-store' }); if (!response.ok) throw new Error('Load failed');
+        const accounts = await response.json(); if (!Array.isArray(accounts)) throw new Error('Invalid account data');
+        const match = accounts.find(account => account && typeof account.username === 'string' && typeof account.password === 'string' && account.username.toLowerCase() === identity && account.password === enteredPassword);
+        if (!match) { showError('That username and password do not match. Please try again.'); return; }
+        localStorage.setItem('medicare_session', JSON.stringify({ account_id: match.account_id, first_name: match.first_name, last_name: match.last_name, username: match.username }));
+        window.location.href = 'home.html';
+      } catch { showError('Your account could not be checked. Reload the page and try again.'); }
+      finally { button.disabled = false; button.textContent = 'Sign In'; }
+    });
+  </script>
+</body>
+</html>

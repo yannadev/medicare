@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 420 420" role="img" aria-labelledby="title">
+  <title id="title">Nonfunctional payment preview graphic</title>
+  <rect width="420" height="420" rx="28" fill="#fff"/>
+  <g fill="#122056">
+    <path d="M30 30h96v96H30zm17 17v62h62V47zM294 30h96v96h-96zm17 17v62h62V47zM30 294h96v96H30zm17 17v62h62v-62z" fill-rule="evenodd"/>
+    <rect x="62" y="62" width="32" height="32"/><rect x="326" y="62" width="32" height="32"/><rect x="62" y="326" width="32" height="32"/>
+    <path d="M151 31h23v24h-23zm45 0h23v24h-23zm45 0h23v24h-23zm-90 46h23v23h-23zm46 0h23v23h-23zm46 0h23v23h-23zm-92 46h23v24h-23zm46 0h23v24h-23zm46 0h23v24h-23zM30 153h23v23H30zm46 0h23v23H76zm46 0h23v23h-23zm-92 45h23v23H30zm46 0h23v23H76zm46 0h23v23h-23zm-92 45h23v23H30zm46 0h23v23H76zm46 0h23v23h-23zM295 151h23v23h-23zm46 0h23v23h-23zm-23 46h23v23h-23zm46 0h23v23h-23zm-69 45h23v23h-23zm46 0h23v23h-23zm23 46h23v23h-23zm-69 46h23v23h-23zm46 0h23v23h-23zm-92-23h23v23h-23zm-46 46h23v23h-23zm-46-46h23v23h-23zm0 46h23v23h-23z"/>
+  </g>
+  <rect x="111" y="171" width="198" height="78" rx="18" fill="#eeeffd" stroke="#5b65dc" stroke-width="2"/>
+  <text x="210" y="218" font-family="Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="3" text-anchor="middle" fill="#122056">PREVIEW</text>
+</svg>

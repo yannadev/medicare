@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Browse everyday medical supplies and home health devices at Medicare.">
+  <link rel="icon" href="../assets/logo.png" type="image/png">
+  <link rel="stylesheet" href="../styles/theme.css">
+  <link rel="stylesheet" href="../styles/home.css">
+  <title>Medicare. — Your health, our priority.</title>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="Medicare home"><img class="brand-logo" src="../assets/logo.png" alt="">Medicare.</a>
+      <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+        <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#products">Products</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a class="cart-link icon-button" href="checkout.html" aria-label="View shopping cart"><i data-lucide="shopping-bag"></i><span id="cart-count" class="cart-count" aria-hidden="true">0</span></a>
+        <a id="sign-in-link" class="button button-primary header-signin" href="signin.html">Sign In</a>
+        <div id="profile-wrap" class="profile-wrap" hidden>
+          <button id="profile-toggle" class="profile-toggle" type="button" aria-label="Account menu" aria-expanded="false" aria-controls="profile-menu"><img src="../assets/default-profile.png" alt="Default profile"></button>
+          <div id="profile-menu" class="profile-menu" hidden><span id="profile-name"></span><button id="sign-out" type="button">Sign Out</button></div>
+        </div>
+        <button id="menu-toggle" class="icon-button menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Open navigation"><i data-lucide="menu"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow hero-eyebrow"><span class="eyebrow-line"></span> Everyday care, made simpler</span>
+          <h1>Your health,<br><span>our priority.</span></h1>
+          <p>Everyday health essentials, thoughtfully brought together. Find what you need for home care, protection, and peace of mind.</p>
+          <div class="hero-actions"><a class="button button-primary" href="#products">Shop essentials <i data-lucide="arrow-up-right"></i></a><a class="button button-outline" href="#about">Our approach</a></div>
+          <div class="hero-bottom"><span>Browse with confidence</span><span>01 / 03</span></div>
+        </div>
+        <div class="hero-visual"><img src="../assets/home-banner.jpg" alt="Home health essentials including a blood pressure monitor, thermometer, masks and gloves" fetchpriority="high"><div class="hero-visual-label"><span class="visual-dot"></span> Care for every day</div></div>
+      </div>
+      <div class="container hero-follow"><span>Explore by need</span><a href="#products" data-hero-category="First Aid">First aid <i data-lucide="arrow-up-right"></i></a><a href="#products" data-hero-category="Protective Supplies">Protection <i data-lucide="arrow-up-right"></i></a><a href="#products" data-hero-category="Health Devices">Home health <i data-lucide="arrow-up-right"></i></a></div>
+    </section>
+
+    <section id="about" class="section about-section">
+      <div class="container about-layout">
+        <div class="about-story"><span class="eyebrow">About Medicare.</span><h2>Care that fits into everyday life.</h2><p class="about-lead">The little things you keep close can make a big difference to how prepared you feel.</p><p>Medicare. brings first aid, daily protection, and home health essentials into one clear place. Browse what matters, understand your options, and keep your picks together.</p><a href="#products" class="text-link">Explore the collection <i data-lucide="arrow-up-right"></i></a></div>
+        <div class="about-panel"><div class="about-panel-top"><span>Thoughtfully organized</span><span>01 — 03</span></div><div class="about-panel-mark" aria-hidden="true"><img src="../assets/logo.png" alt=""></div><h3>Everyday essentials,<br>easy to find.</h3><div class="about-category-list"><a href="#products" data-hero-category="First Aid"><span>01</span>First aid<i data-lucide="arrow-up-right"></i></a><a href="#products" data-hero-category="Protective Supplies"><span>02</span>Daily protection<i data-lucide="arrow-up-right"></i></a><a href="#products" data-hero-category="Health Devices"><span>03</span>Home health<i data-lucide="arrow-up-right"></i></a></div></div>
+      </div>
+    </section>
+
+    <section id="services" class="section services-section">
+      <div class="container">
+        <div class="section-heading services-heading"><span class="eyebrow">How it works</span><h2>From a first search to a clearer choice.</h2><p>Three simple steps keep the essentials easy to find and easy to review.</p></div>
+        <div class="service-grid">
+          <article class="service-item service-feature"><div class="service-top"><span class="service-number">01 / FIND</span><span class="service-icon"><i data-lucide="search-check"></i></span></div><div><h3>Find what matters</h3><p>Search by product name or browse the categories that fit your needs.</p></div><a href="#products" class="service-link">Browse products <i data-lucide="arrow-up-right"></i></a></article>
+          <article class="service-item"><div class="service-top"><span class="service-number">02 / GATHER</span><span class="service-icon"><i data-lucide="shopping-bag"></i></span></div><div><h3>Keep your picks together</h3><p>Add the essentials you want and adjust quantities as you go.</p></div><a href="#products" class="service-link">Explore essentials <i data-lucide="arrow-up-right"></i></a></article>
+          <article class="service-item"><div class="service-top"><span class="service-number">03 / REVIEW</span><span class="service-icon"><i data-lucide="clipboard-check"></i></span></div><div><h3>See the full picture</h3><p>Check every item and the total in one calm, readable summary.</p></div><a href="checkout.html" class="service-link">View your cart <i data-lucide="arrow-up-right"></i></a></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="section products-section">
+      <div class="container">
+        <div class="products-heading"><div class="section-heading"><h2>Essentials for everyday care</h2><p>Explore the collection. Prices are shown in Philippine pesos.</p></div><a class="button button-outline desktop-cart-link" href="checkout.html"><i data-lucide="shopping-bag"></i> View cart</a></div>
+        <div class="product-toolbar"><label class="search-wrap"><i data-lucide="search"></i><span class="sr-only">Search products</span><input id="product-search" type="search" placeholder="Search products" autocomplete="off"></label><label class="filter-wrap"><span class="sr-only">Filter by category</span><select id="category-filter"><option value="all">All categories</option></select><i data-lucide="chevron-down"></i></label></div>
+        <p id="product-result-count" class="result-count" aria-live="polite">Loading products…</p>
+        <div id="product-grid" class="product-grid" aria-live="polite"></div>
+        <div id="product-empty" class="product-empty" hidden><i data-lucide="search-x"></i><h3>No matching products</h3><p>Try a different search or category.</p><button id="clear-filters" class="button button-secondary" type="button">Clear filters</button></div>
+        <div id="product-error" class="product-empty" hidden><i data-lucide="circle-alert"></i><h3>Products could not load</h3><p>Refresh the page or try again.</p><button id="retry-products" class="button button-secondary" type="button">Try again</button></div>
+      </div>
+    </section>
+
+    <section id="reviews" class="section reviews-section">
+      <div class="container reviews-shell">
+        <div class="reviews-heading"><div><span class="eyebrow">The experience</span><h2>Care should feel<br>clear at every step.</h2><p>Illustrative feedback on what a better shopping experience can feel like.</p></div><div class="review-controls"><span id="review-status" class="review-status" aria-live="polite">01 / 05</span><button id="review-prev" class="icon-button" type="button" aria-label="Previous review"><i data-lucide="arrow-left"></i></button><button id="review-next" class="icon-button" type="button" aria-label="Next review"><i data-lucide="arrow-right"></i></button></div></div>
+        <div id="review-track" class="review-track" role="region" aria-label="Illustrative reviews" tabindex="0">
+          <blockquote class="review-card"><span class="review-number">01</span><p>“Everything is easy to spot, from the product details to the final order total.”</p><footer>Clarity in every detail</footer></blockquote>
+          <blockquote class="review-card"><span class="review-number">02</span><p>“I can browse at my own pace and see exactly what is in my cart.”</p><footer>A calmer way to shop</footer></blockquote>
+          <blockquote class="review-card"><span class="review-number">03</span><p>“Finding the right home health supplies feels straightforward and reassuring.”</p><footer>Essentials within reach</footer></blockquote>
+          <blockquote class="review-card"><span class="review-number">04</span><p>“The categories make it simple to get from a question to the product I need.”</p><footer>Thoughtful organization</footer></blockquote>
+          <blockquote class="review-card"><span class="review-number">05</span><p>“The clean layout gives me room to compare products without feeling rushed.”</p><footer>Space to decide</footer></blockquote>
+        </div>
+        <div class="review-progress" aria-hidden="true"><span id="review-progress-fill"></span></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+      <div class="container contact-layout">
+        <div class="contact-intro"><span class="eyebrow">Get in touch</span><h2>Here when you need a little direction.</h2><p>Questions about finding the right essentials? Reach out, or continue exploring the collection at your own pace.</p><a class="button button-primary" href="#products">Explore products <i data-lucide="arrow-up-right"></i></a></div>
+        <div class="contact-card">
+          <span class="contact-card-index">Contact Medicare</span>
+          <div class="contact-card-main">
+            <h3>Start a conversation.</h3>
+            <p>For product questions and general enquiries, send us an email.</p>
+            <a class="contact-email" href="mailto:medicare@gmail.com"><span><small>Email us at</small><strong>medicare@gmail.com</strong></span><i data-lucide="arrow-up-right"></i></a>
+          </div>
+          <div class="contact-social"><span>Find us on social</span><div class="social-list"><span class="social-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.3H16l.4-2.9h-2.9V8.9c0-.8.2-1.4 1.4-1.4h1.6V4.9c-.3 0-1.2-.1-2.3-.1-2.5 0-4.2 1.5-4.2 4.3v1.7H7.5v2.9H10V21z"/></svg>Facebook</span><span class="social-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.6 2h3.1c.2 2.4 1.5 3.8 4.3 4v3.1c-1.7 0-3.1-.5-4.3-1.4v6.4c0 4-2.9 6.9-6.8 6.9a6.9 6.9 0 0 1-6.9-6.9 6.8 6.8 0 0 1 8.4-6.7v3.4a3.5 3.5 0 0 0-1.5-.3 3.6 3.6 0 1 0 3.7 3.6V2z"/></svg>TikTok</span><span class="social-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</span></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container"><div class="footer-grid"><div><a class="brand" href="#home"><img class="brand-logo" src="../assets/logo.png" alt="">Medicare.</a><p class="muted">Your health, our priority.</p></div><div class="footer-links"><a href="#about">About</a><a href="#services">Services</a><a href="#products">Products</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></div></div><div class="footer-bottom"><span>© 2026 Medicare.</span><span>Made for everyday care.</span></div></div></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>
+    const CART_STORAGE_KEY = 'medicare_cart';
+    const SESSION_STORAGE_KEY = 'medicare_session';
+    const peso = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP', maximumFractionDigits: 0 });
+    let products = [];
+    let toastTimer;
+    const byId = id => document.getElementById(id);
+    function icons(root) { if (window.lucide) window.lucide.createIcons(root ? { root } : undefined); }
+    function readCart() {
+      try {
+        const data = JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || '[]'); if (!Array.isArray(data)) return [];
+        const merged = new Map();
+        for (const item of data) if (item && typeof item.product_id === 'string' && Number.isInteger(item.quantity) && item.quantity > 0) merged.set(item.product_id, (merged.get(item.product_id) || 0) + item.quantity);
+        return [...merged].map(([product_id, quantity]) => ({ product_id, quantity }));
+      } catch { return []; }
+    }
+    function saveCart(cart) { try { localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart)); updateCartCount(); return true; } catch { notify('Cart storage is unavailable in this browser.'); return false; } }
+    function updateCartCount() { const count = readCart().reduce((sum, item) => sum + item.quantity, 0); byId('cart-count').textContent = count > 99 ? '99+' : count; byId('cart-count').hidden = count === 0; }
+    function notify(message) { const toast = byId('toast'); toast.textContent = message; toast.classList.add('visible'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('visible'), 3200); }
+    function addProduct(id, goToCheckout = false) {
+      const product = products.find(item => item.product_id === id);
+      if (!product || product.stock < 1) { notify('This product is unavailable.'); return; }
+      const cart = readCart(); const existing = cart.find(item => item.product_id === id);
+      if (existing && existing.quantity >= product.stock) { notify('You have reached the available quantity.'); return; }
+      if (existing) existing.quantity += 1; else cart.push({ product_id: id, quantity: 1 });
+      if (!saveCart(cart)) return;
+      if (goToCheckout) window.location.href = 'checkout.html'; else notify(`${product.product_name} added to your cart.`);
+    }
+    function productCard(product) {
+      const card = document.createElement('article'); card.className = 'product-card';
+      card.innerHTML = '<div class="product-image-wrap"><img loading="lazy"></div><div class="product-content"><span class="product-category"></span><h3></h3><p class="product-description"></p><div class="product-meta"><strong class="product-price"></strong><span class="product-stock"></span></div><div class="product-actions"><button class="button button-secondary add-button" type="button"><i data-lucide="plus"></i> Add to cart</button><button class="button button-primary buy-button" type="button">Buy now</button></div></div>';
+      const img = card.querySelector('img'); img.src = '../' + product.image; img.alt = product.product_name; card.querySelector('.product-category').textContent = product.category; card.querySelector('h3').textContent = product.product_name; card.querySelector('.product-description').textContent = product.description; card.querySelector('.product-price').textContent = peso.format(product.price); card.querySelector('.product-stock').textContent = product.stock > 0 ? `${product.stock} available` : 'Out of stock';
+      for (const button of card.querySelectorAll('button')) { button.disabled = product.stock === 0; button.dataset.productId = product.product_id; }
+      return card;
+    }
+    function renderProducts() {
+      const query = byId('product-search').value.trim().toLowerCase(); const category = byId('category-filter').value;
+      const visible = products.filter(item => item.product_name.toLowerCase().includes(query) && (category === 'all' || item.category === category));
+      const grid = byId('product-grid'); grid.replaceChildren(...visible.map(productCard)); byId('product-empty').hidden = visible.length !== 0; byId('product-result-count').textContent = `${visible.length} of ${products.length} products`; icons(grid);
+    }
+    async function loadProducts() {
+      byId('product-error').hidden = true; byId('product-empty').hidden = true; byId('product-result-count').textContent = 'Loading products…';
+      try {
+        const response = await fetch('../product.json', { cache: 'no-store' }); if (!response.ok) throw new Error('Product request failed');
+        const data = await response.json();
+        if (!Array.isArray(data) || data.length !== 10 || !data.every(item => item && typeof item.product_id === 'string' && typeof item.product_name === 'string' && typeof item.category === 'string' && typeof item.description === 'string' && Number.isFinite(item.price) && Number.isInteger(item.stock) && item.stock >= 0 && /^assets\/[a-z0-9-]+\.(jpg|png)$/.test(item.image))) throw new Error('Invalid product data');
+        products = data; const select = byId('category-filter'); select.replaceChildren(new Option('All categories', 'all'), ...[...new Set(products.map(item => item.category))].sort().map(name => new Option(name, name))); renderProducts();
+      } catch { byId('product-grid').replaceChildren(); byId('product-result-count').textContent = ''; byId('product-error').hidden = false; }
+    }
+    function updateAccount() {
+      let session = null; try { session = JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY) || 'null'); } catch {}
+      const signedIn = !!(session && typeof session.first_name === 'string' && typeof session.username === 'string'); byId('sign-in-link').hidden = signedIn; byId('profile-wrap').hidden = !signedIn;
+      if (signedIn) byId('profile-name').textContent = `${session.first_name} ${session.last_name || ''}`.trim();
+    }
+    byId('product-search').addEventListener('input', renderProducts);
+    byId('category-filter').addEventListener('change', renderProducts);
+    byId('clear-filters').addEventListener('click', () => { byId('product-search').value = ''; byId('category-filter').value = 'all'; renderProducts(); byId('product-search').focus(); });
+    byId('retry-products').addEventListener('click', loadProducts);
+    byId('product-grid').addEventListener('click', event => { const add = event.target.closest('.add-button'); const buy = event.target.closest('.buy-button'); if (add || buy) addProduct((add || buy).dataset.productId, !!buy); });
+    document.querySelectorAll('[data-hero-category]').forEach(link => link.addEventListener('click', () => { byId('product-search').value = ''; byId('category-filter').value = link.dataset.heroCategory; renderProducts(); }));
+    const reviewTrack = byId('review-track');
+    const reviewCards = [...reviewTrack.querySelectorAll('.review-card')];
+    const reviewClones = reviewCards.slice(0, 3).map(card => { const clone = card.cloneNode(true); clone.setAttribute('aria-hidden', 'true'); clone.inert = true; return clone; });
+    reviewTrack.append(...reviewClones);
+    const reviewVisualCards = [...reviewCards, ...reviewClones];
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    let reviewAnimation = 0, reviewVelocity = 0, reviewPosition = 0, reviewTarget = 0, reviewTargetIndex = 0, reviewLastTime = 0, reviewDrag = null;
+    let reviewAutoTimer = 0, reviewVisible = false, reviewHovered = false, reviewFocused = false, reviewResumeAt = 0;
+    function reviewPoints() {
+      const left = reviewTrack.getBoundingClientRect().left;
+      const max = reviewTrack.scrollWidth - reviewTrack.clientWidth;
+      return reviewVisualCards.map(card => Math.min(max, Math.max(0, card.getBoundingClientRect().left - left + reviewTrack.scrollLeft)));
+    }
+    function nearestReview(position) {
+      const points = reviewPoints(); let nearest = 0;
+      points.forEach((point, index) => { if (Math.abs(point - position) < Math.abs(points[nearest] - position)) nearest = index; });
+      return nearest;
+    }
+    function layoutReviewTrack() {
+      const index = nearestReview(reviewTrack.scrollLeft) % reviewCards.length;
+      reviewTrack.scrollLeft = reviewPoints()[index];
+      updateReviewUI();
+    }
+    function updateReviewUI() {
+      const index = nearestReview(reviewTrack.scrollLeft) % reviewCards.length;
+      byId('review-status').textContent = `${String(index + 1).padStart(2, '0')} / ${String(reviewCards.length).padStart(2, '0')}`;
+      byId('review-progress-fill').style.width = `${((index + 1) / reviewCards.length) * 100}%`;
+      byId('review-prev').disabled = index === 0;
+      byId('review-next').disabled = false;
+    }
+    function stopReviewAnimation() { if (reviewAnimation) cancelAnimationFrame(reviewAnimation); reviewAnimation = 0; reviewTrack.classList.remove('is-settling'); }
+    function normalizeReviewLoop(index = nearestReview(reviewTrack.scrollLeft)) {
+      if (index < reviewCards.length) return;
+      reviewTrack.classList.add('is-settling');
+      reviewTrack.scrollLeft = reviewPoints()[index - reviewCards.length];
+      requestAnimationFrame(() => { reviewTrack.classList.remove('is-settling'); updateReviewUI(); });
+    }
+    function canAutoReview() { return reviewVisible && !document.hidden && !reducedMotion.matches && !reviewHovered && !reviewFocused && !reviewDrag; }
+    function scheduleAutoReview() {
+      clearTimeout(reviewAutoTimer); reviewAutoTimer = 0;
+      if (!canAutoReview()) return;
+      const wait = Math.max(5600, reviewResumeAt - performance.now());
+      reviewAutoTimer = setTimeout(() => { if (!canAutoReview()) return; advanceReview(); scheduleAutoReview(); }, wait);
+    }
+    function deferAutoReview() { reviewResumeAt = performance.now() + 9000; scheduleAutoReview(); }
+    function advanceReview() { const index = nearestReview(reviewTrack.scrollLeft) % reviewCards.length; snapReview(index + 1); }
+    function snapReview(index, initialVelocity = 0) {
+      const points = reviewPoints(); reviewTargetIndex = Math.max(0, Math.min(points.length - 1, index)); reviewTarget = points[reviewTargetIndex];
+      if (reducedMotion.matches) { stopReviewAnimation(); reviewTrack.scrollLeft = reviewTarget; normalizeReviewLoop(reviewTargetIndex); updateReviewUI(); return; }
+      if (!reviewAnimation) { reviewPosition = reviewTrack.scrollLeft; reviewVelocity = initialVelocity; reviewLastTime = performance.now(); reviewTrack.classList.add('is-settling'); }
+      else reviewVelocity = reviewVelocity * .5 + initialVelocity * .5;
+      function frame(now) {
+        const dt = Math.min((now - reviewLastTime) / 1000, .032); reviewLastTime = now;
+        const omega = 17; const acceleration = omega * omega * (reviewTarget - reviewPosition) - 2 * omega * reviewVelocity;
+        reviewVelocity += acceleration * dt; reviewPosition += reviewVelocity * dt; reviewTrack.scrollLeft = reviewPosition;
+        if (Math.abs(reviewTarget - reviewPosition) < .5 && Math.abs(reviewVelocity) < 3) { reviewTrack.scrollLeft = reviewTarget; stopReviewAnimation(); normalizeReviewLoop(reviewTargetIndex); updateReviewUI(); return; }
+        reviewAnimation = requestAnimationFrame(frame);
+      }
+      if (!reviewAnimation) reviewAnimation = requestAnimationFrame(frame);
+    }
+    byId('review-prev').addEventListener('click', () => { snapReview((nearestReview(reviewTrack.scrollLeft) % reviewCards.length) - 1); deferAutoReview(); });
+    byId('review-next').addEventListener('click', () => { advanceReview(); deferAutoReview(); });
+    reviewTrack.addEventListener('pointerdown', event => {
+      deferAutoReview();
+      if (event.pointerType === 'touch' || event.button !== 0) return;
+      stopReviewAnimation(); reviewDrag = { id: event.pointerId, startX: event.clientX, startScroll: reviewTrack.scrollLeft, lastX: event.clientX, lastTime: performance.now(), velocity: 0, active: false };
+      reviewTrack.setPointerCapture(event.pointerId);
+    });
+    reviewTrack.addEventListener('pointermove', event => {
+      if (!reviewDrag || event.pointerId !== reviewDrag.id) return;
+      const delta = event.clientX - reviewDrag.startX;
+      if (!reviewDrag.active && Math.abs(delta) < 10) return;
+      if (!reviewDrag.active) { reviewDrag.active = true; reviewTrack.classList.add('is-dragging'); }
+      const now = performance.now(); const elapsed = Math.max(1, now - reviewDrag.lastTime);
+      reviewDrag.velocity = -(event.clientX - reviewDrag.lastX) / elapsed * 1000;
+      reviewDrag.lastX = event.clientX; reviewDrag.lastTime = now;
+      const max = reviewTrack.scrollWidth - reviewTrack.clientWidth; const desired = reviewDrag.startScroll - delta;
+      const overshoot = desired < 0 ? desired : desired > max ? desired - max : 0;
+      reviewTrack.scrollLeft = Math.max(0, Math.min(max, desired - overshoot * .55));
+    });
+    function releaseReview(event) {
+      if (!reviewDrag || event.pointerId !== reviewDrag.id) return;
+      const drag = reviewDrag; reviewDrag = null; reviewTrack.classList.remove('is-dragging');
+      if (!drag.active) return;
+      const velocity = performance.now() - drag.lastTime > 90 ? 0 : drag.velocity;
+      const projected = reviewTrack.scrollLeft + (velocity / 1000) * .99 / (1 - .99);
+      snapReview(nearestReview(projected), velocity);
+    }
+    reviewTrack.addEventListener('pointerup', releaseReview);
+    reviewTrack.addEventListener('pointercancel', releaseReview);
+    reviewTrack.addEventListener('keydown', event => { if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); if (event.key === 'ArrowRight') advanceReview(); else snapReview((nearestReview(reviewTrack.scrollLeft) % reviewCards.length) - 1); deferAutoReview(); } });
+    reviewTrack.addEventListener('wheel', deferAutoReview, { passive: true });
+    reviewTrack.addEventListener('scroll', () => requestAnimationFrame(updateReviewUI), { passive: true });
+    reviewTrack.addEventListener('scrollend', () => { if (!reviewAnimation && !reviewDrag) normalizeReviewLoop(); });
+    const reviewsSection = byId('reviews');
+    reviewsSection.addEventListener('pointerenter', () => { reviewHovered = true; scheduleAutoReview(); });
+    reviewsSection.addEventListener('pointerleave', () => { reviewHovered = false; scheduleAutoReview(); });
+    reviewsSection.addEventListener('focusin', () => { reviewFocused = true; scheduleAutoReview(); });
+    reviewsSection.addEventListener('focusout', event => { if (!reviewsSection.contains(event.relatedTarget)) { reviewFocused = false; scheduleAutoReview(); } });
+    new IntersectionObserver(entries => { reviewVisible = entries[0].intersectionRatio >= .35; scheduleAutoReview(); }, { threshold: [.35] }).observe(reviewsSection);
+    document.addEventListener('visibilitychange', scheduleAutoReview);
+    reducedMotion.addEventListener('change', () => { if (reducedMotion.matches) stopReviewAnimation(); scheduleAutoReview(); });
+    window.addEventListener('resize', layoutReviewTrack);
+    byId('menu-toggle').addEventListener('click', () => { const open = byId('main-nav').classList.toggle('open'); byId('menu-toggle').setAttribute('aria-expanded', String(open)); byId('menu-toggle').setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation'); });
+    byId('main-nav').addEventListener('click', event => { if (event.target.closest('a')) { byId('main-nav').classList.remove('open'); byId('menu-toggle').setAttribute('aria-expanded', 'false'); } });
+    byId('profile-toggle').addEventListener('click', () => { const menu = byId('profile-menu'); menu.hidden = !menu.hidden; byId('profile-toggle').setAttribute('aria-expanded', String(!menu.hidden)); });
+    byId('sign-out').addEventListener('click', () => { localStorage.removeItem(SESSION_STORAGE_KEY); byId('profile-menu').hidden = true; updateAccount(); notify('Signed out.'); });
+    document.addEventListener('click', event => { if (!event.target.closest('#profile-wrap')) { byId('profile-menu').hidden = true; byId('profile-toggle').setAttribute('aria-expanded', 'false'); } });
+    window.addEventListener('storage', () => { updateCartCount(); updateAccount(); });
+    updateCartCount(); updateAccount(); layoutReviewTrack(); icons(); loadProducts();
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light">
+  <link rel="icon" href="../assets/logo.png" type="image/png"><link rel="stylesheet" href="../styles/theme.css"><link rel="stylesheet" href="../styles/signup.css">
+  <title>Sign Up — Medicare.</title>
+</head>
+<body>
+  <main class="auth-shell">
+    <section class="auth-aside" aria-label="Welcome to Medicare"><a class="brand" href="home.html"><img class="brand-logo" src="../assets/logo.png" alt="">Medicare.</a><div class="aside-copy"><span class="eyebrow-light">A simpler place for care</span><h1>Care starts<br>with clarity.</h1><p>Explore a shopping experience designed around the essentials that matter to you.</p></div></section>
+    <section class="auth-main"><div class="auth-top"><a class="brand mobile-brand" href="home.html"><img class="brand-logo" src="../assets/logo.png" alt="">Medicare.</a><a href="home.html" class="back-link"><i data-lucide="arrow-left"></i> Back to home</a></div><div class="auth-card"><div class="auth-heading"><h2>Create your profile</h2><p>Enter your details to explore the sign-up flow.</p></div><form id="signup-form" novalidate><div class="name-row"><div class="field"><label for="first-name">First name</label><input id="first-name" autocomplete="given-name" required placeholder="First name"></div><div class="field"><label for="last-name">Last name</label><input id="last-name" autocomplete="family-name" required placeholder="Last name"></div></div><div class="field"><label for="username">Username</label><input id="username" autocomplete="username" required minlength="3" placeholder="Choose a username"></div><div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="email" required placeholder="name@example.com"></div><div class="field"><label for="password">Password</label><div class="password-wrap"><input id="password" type="password" autocomplete="new-password" required minlength="8" placeholder="At least 8 characters"><button class="password-toggle" type="button" data-toggle="password" aria-label="Show password"><i data-lucide="eye"></i></button></div></div><div class="field"><label for="confirm-password">Confirm password</label><div class="password-wrap"><input id="confirm-password" type="password" autocomplete="new-password" required placeholder="Repeat password"><button class="password-toggle" type="button" data-toggle="confirm-password" aria-label="Show password"><i data-lucide="eye"></i></button></div></div><p id="form-error" class="notice notice-error" role="alert" hidden></p><button class="button button-primary submit-button" type="submit">Continue <i data-lucide="arrow-right"></i></button></form><p class="auth-switch">Already have a username? <a href="signin.html">Sign In</a></p></div></section>
+  </main>
+  <dialog id="success-dialog" class="dialog-success" aria-labelledby="success-title"><button class="icon-button dialog-close" type="button" id="dialog-close" aria-label="Close"><i data-lucide="x"></i></button><div class="dialog-icon"><i data-lucide="check"></i></div><h2 id="success-title">Sign-up flow complete</h2><p>No account was created, and your information was not saved. Use the provided username to sign in.</p><div class="dialog-actions"><a class="button button-primary" href="signin.html">Go to Sign In</a></div></dialog>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="../scripts/dialog.js"></script>
+  <script>
+    if (window.lucide) window.lucide.createIcons();
+    const form = document.getElementById('signup-form'); const error = document.getElementById('form-error'); const dialog = document.getElementById('success-dialog'); const dialogMotion = createFluidDialog(dialog, { fallbackFocus: () => document.getElementById('first-name') });
+    document.querySelectorAll('[data-toggle]').forEach(button => button.addEventListener('click', () => { const input = document.getElementById(button.dataset.toggle); const visible = input.type === 'password'; input.type = visible ? 'text' : 'password'; button.setAttribute('aria-label', visible ? 'Hide password' : 'Show password'); }));
+    document.getElementById('dialog-close').addEventListener('click', () => dialogMotion.close());
+    function showError(message, focusId) { error.textContent = message; error.hidden = false; if (focusId) document.getElementById(focusId).focus(); }
+    form.addEventListener('submit', event => {
+      event.preventDefault(); error.hidden = true;
+      const first = document.getElementById('first-name').value.trim(); const last = document.getElementById('last-name').value.trim(); const username = document.getElementById('username').value.trim(); const email = document.getElementById('email').value.trim(); const password = document.getElementById('password').value; const confirm = document.getElementById('confirm-password').value;
+      if (!first) return showError('Enter a first name.', 'first-name');
+      if (!last) return showError('Enter a last name.', 'last-name');
+      if (username.length < 3) return showError('Choose a username with at least 3 characters.', 'username');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError('Enter a valid email address.', 'email');
+      if (password.length < 8) return showError('Use a password with at least 8 characters.', 'password');
+      if (confirm !== password) return showError('The passwords do not match.', 'confirm-password');
+      form.reset(); dialogMotion.show(document.activeElement);
+    });
+  </script>
+</body>
+</html>

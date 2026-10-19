@@ -1,0 +1,12 @@
+[
+  {"product_id":"MED001","product_name":"Medical Gloves","category":"Protective Supplies","description":"Disposable nitrile examination gloves, box of 100.","price":250,"image":"assets/medical-gloves.jpg","stock":50},
+  {"product_id":"MED002","product_name":"Surgical Mask","category":"Protective Supplies","description":"Three-layer disposable face masks, box of 50.","price":150,"image":"assets/surgical-mask.jpg","stock":100},
+  {"product_id":"MED003","product_name":"Digital Thermometer","category":"Health Devices","description":"Easy-read digital thermometer for home use.","price":320,"image":"assets/digital-thermometer.jpg","stock":35},
+  {"product_id":"MED004","product_name":"Blood Pressure Monitor","category":"Health Devices","description":"Automatic upper-arm monitor with cuff.","price":1890,"image":"assets/blood-pressure-monitor.jpg","stock":18},
+  {"product_id":"MED005","product_name":"First Aid Kit","category":"First Aid","description":"Compact kit with everyday first aid essentials.","price":590,"image":"assets/first-aid-kit.jpg","stock":28},
+  {"product_id":"MED006","product_name":"Alcohol Wipes","category":"First Aid","description":"Individually packed alcohol prep wipes, box of 100.","price":180,"image":"assets/alcohol-wipes.jpg","stock":75},
+  {"product_id":"MED007","product_name":"Adhesive Bandages","category":"First Aid","description":"Assorted adhesive bandages, pack of 40.","price":95,"image":"assets/adhesive-bandages.jpg","stock":120},
+  {"product_id":"MED008","product_name":"Sterile Gauze Pads","category":"First Aid","description":"Individually wrapped sterile gauze pads, pack of 20.","price":135,"image":"assets/sterile-gauze-pads.jpg","stock":80},
+  {"product_id":"MED009","product_name":"Pulse Oximeter","category":"Health Devices","description":"Fingertip pulse oximeter with digital display.","price":790,"image":"assets/pulse-oximeter.jpg","stock":24},
+  {"product_id":"MED010","product_name":"Stethoscope","category":"Health Devices","description":"Classic dual-head stethoscope.","price":680,"image":"assets/stethoscope.jpg","stock":22}
+]
